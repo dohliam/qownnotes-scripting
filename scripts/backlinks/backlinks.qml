@@ -119,6 +119,7 @@ QtObject {
             backlinksHtml = getBacklinks(note);
         }
 
-        return html + backlinksHtml;
+        html = html.replace("</body>", "\n" + backlinksHtml + "\n</body>");
+        return html;
     }
 }
