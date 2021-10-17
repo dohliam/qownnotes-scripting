@@ -1,0 +1,9 @@
+{
+  "name": "Daily note",
+  "identifier": "daily-note",
+  "script": "daily-note.qml",
+  "authors": ["@dohliam", "@pbek", "@sanderboom", "@kantrol"],
+  "version": "1.0",
+  "minAppVersion": "20.4.16",
+  "description" : "This script creates a menu item and a button to create or jump to a note for the current day."
+}
