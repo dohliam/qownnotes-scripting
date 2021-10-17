@@ -1,0 +1,117 @@
+<html><head><title>Bugs</title><meta charset="utf-8"/><style>h1 { margin: 5px 0 20px 0; }h2, h3 { margin: 10px 0 15px 0; }img { max-width: 100%; }pre { background-color: #f1f1f1; border-radius: 5px; padding: 10px; }pre > code { padding: 0; }table {border-spacing: 0; border-style: solid; border-width: 1px; border-collapse: collapse; margin-top: 0.5em;}th, td {padding: 2px 5px;}a { color: #FF9137; text-decoration: none; } pre, code { font-family: Monospace; font-weight: normal;  }pre { display: block; background-color: #f1f1f1; white-space: pre-wrap } code { padding: 3px; overflow: auto; line-height: 1.45em; background-color: #f1f1f1; border-radius: 5px; color: #000000; } .code-comment { color: #75715E; font-style: italic;} .code-string { color: #E6DB74;} .code-literal { color: #AE81FF;} .code-type { color: #66D9EF;} .code-builtin { color: #A6E22E;} .code-keyword { color: #F92672;} .code-other { color: #F92672;} body { font-family: "Sans Serif"; font-weight: normal; font-size: 12pt; } span.critic.comment, span.critic.metadata {background-color:#FFFF00; padding-left: 4px; border-left: 4px solid #ff832b; } del {color: #FF0000 ; text-decoration: line-through;} ins {color: #008000 ; text-decoration: underline;} ins.break {background-color: #008000} mark {background-color:#ff832b;}</style></head><body class="export"><h1>Bugs</h1>
+<p>These should be reported on the QOwnNotes issue tracker. Notes below are for collecting information on bugs for eventual reporting on the QOwnNotes issue tracker.</p>
+<h2>Anchor links</h2>
+<ul>
+<li>auto-generation of anchors and links to <code>#anchors</code> do not work</li>
+<li>see example tests <a href="../examples/anchors.html">here</a></li>
+</ul>
+<p>example code:</p>
+<pre><code>[this links to a heading in the current document]&#40;#heading&#41;
+[this links to a heading in a different document]&#40;another-note.md#heading&#41;</code></pre>
+<h2>Numbered checklists</h2>
+<ul>
+<li>numbered checklists don't really work (they turn into bulleted checklists by default):</li>
+<li>see example tests <a href="../examples/numbered-checklists.html">here</a></li>
+</ul>
+<p>example:</p>
+<pre><code>1. [ ] a checkbox
+2. [x] another checkbox
+3. doesn&#39;t seem to use the numbers...</code></pre>
+<h2>Spacing of last item in list</h2>
+<ul>
+<li>if the last item in a list is indented, it is spaced very strangely (and different from all other items in the list)<ul>
+<li>is this an example (yes, it is)</li>
+</ul>
+</li>
+</ul>
+<h2>Blockquotes styling</h2>
+<ul>
+<li>blockquotes are not styled at all (only indented)<ul>
+<li>this is still true even if the setting for &quot;full styling&quot; of blockquotes is selected<ul>
+<li>this appears to merely highlight the blockquote text in yellow in the edit window<ul>
+<li>i.e., it has no effect on the preview at all</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>these should be, at the least, styled with a vertical grey bar as in most other applications</li>
+</ul>
+</li>
+</ul>
+<h2>Export to PDF</h2>
+<ul>
+<li>export to pdf always prints to black and white<ul>
+<li>images, links, code highlighting etc, are all black and white</li>
+<li>this is almost never desirable</li>
+<li>should at least be an option for colour<ul>
+<li>or, even better, default to black and white for printing and colour for pdf export</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>&quot;Active note folder&quot;</h2>
+<ul>
+<li>there is no explanation of what making a new folder an &quot;active note folder&quot; means</li>
+</ul>
+<h2>Creating new links on click</h2>
+<ul>
+<li>this issue still seems to be affecting wikilinks clicked on in preview:<ul>
+<li><a href="https://github.com/pbek/QOwnNotes/issues/2106">Relative links to new file in existing subfolder will create new folders instead of using the existing subfolder · Issue #2106 · pbek/QOwnNotes · GitHub</a></li>
+</ul>
+</li>
+</ul>
+<h2>Styling link text</h2>
+<ul>
+<li>adding emphasis / italics to link text makes link disappear in preview<ul>
+<li>e.g.: <a href="https://example.com"><em>example link</em></a></li>
+<li>link is still clickable though</li>
+<li>check to make sure this isn't restricted to one particular colour scheme</li>
+</ul>
+</li>
+<li>more generally, styling link text does not seem to work at all</li>
+<li>examples:<ul>
+<li><a href="https://example.com"><strong>bold link text</strong></a>: preview displays as bold text, but not link, however link is still clickable</li>
+<li><a href="https://example.com"><em>italic link text</em></a>: preview displays as italic text, but not link, however link is still clickable</li>
+<li><a href="https://example.com"><s>strikethrough link text</s></a>: displays correctly in the preview, but not in the editor</li>
+<li><strong><a href="https://example.com">bold link text</a></strong>: does not show as bold in the preview</li>
+</ul>
+</li>
+</ul>
+<h2>Unable to drag links from the preview</h2>
+<ul>
+<li>in most Qt programs, clicking and dragging on a link/URL allows the full URL to be dropped on to any other program (e.g., a browser or text editor)</li>
+<li>however, clicking and dragging on links in QOwnNotes does not do anything</li>
+<li>in other words, there is no easy way to open links other than in the default browser (by clicking on them directly)<ul>
+<li>current options are:<ul>
+<li>selecting the full text of the link in the editing window</li>
+<li>right-clicking on the link and selecting &quot;copy link&quot;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>possibly a Qt bug (?)</li>
+</ul>
+<h2>Disallow all note editing</h2>
+<ul>
+<li>Menu item displays as checkbox with title &quot;Disallow all note editing&quot;<ul>
+<li>However, when checked, this means &quot;Allow all note editing&quot; is currently in effect</li>
+<li>When <em>unchecked</em>, this actually means &quot;Disallow all note editing&quot;</li>
+<li>This is counterintuitive and should probably be changed</li>
+</ul>
+</li>
+<li>&quot;Disallow all note editing&quot; seems to activate randomly for no reason<ul>
+<li>Need to collect more information about what circumstances cause this to happen</li>
+</ul>
+</li>
+</ul>
+
+<h2>Backlinks</h2>
+
+<ul>
+    <li><a href="../examples/anchors.html">Anchor links examples</a></li>
+    <li><a href="../examples/numbered-checklists.html">Numbered checklists examples</a></li>
+    <li><a href="../issues/issues.html">Issues</a></li>
+</ul>
+
+</body></html>

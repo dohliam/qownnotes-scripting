@@ -1,0 +1,19 @@
+<html><head><title>Fix new note headline</title><meta charset="utf-8"/><style>h1 { margin: 5px 0 20px 0; }h2, h3 { margin: 10px 0 15px 0; }img { max-width: 100%; }pre { background-color: #f1f1f1; border-radius: 5px; padding: 10px; }pre > code { padding: 0; }table {border-spacing: 0; border-style: solid; border-width: 1px; border-collapse: collapse; margin-top: 0.5em;}th, td {padding: 2px 5px;}a { color: #FF9137; text-decoration: none; } pre, code { font-family: Monospace; font-weight: normal;  }pre { display: block; background-color: #f1f1f1; white-space: pre-wrap } code { padding: 3px; overflow: auto; line-height: 1.45em; background-color: #f1f1f1; border-radius: 5px; color: #000000; } .code-comment { color: #75715E; font-style: italic;} .code-string { color: #E6DB74;} .code-literal { color: #AE81FF;} .code-type { color: #66D9EF;} .code-builtin { color: #A6E22E;} .code-keyword { color: #F92672;} .code-other { color: #F92672;} body { font-family: "Sans Serif"; font-weight: normal; font-size: 12pt; } span.critic.comment, span.critic.metadata {background-color:#FFFF00; padding-left: 4px; border-left: 4px solid #ff832b; } del {color: #FF0000 ; text-decoration: line-through;} ins {color: #008000 ; text-decoration: underline;} ins.break {background-color: #008000} mark {background-color:#ff832b;}</style></head><body class="export"><h1>Fix new note headline</h1>
+<p>Fix new note headlines to use atx rather than setext headers.</p>
+<h2>Description</h2>
+<p>For some reason, QOwnNotes defaults to using setext headers for the titles of notes, but atx headers everywhere else (for example, level two, three, etc headings).</p>
+<p>Example of setext title heading:</p>
+<pre><code class="language-markdown">Note title
+==========</code></pre>
+<p>Example of atx heading:</p>
+<pre><code class="language-markdown"># Note title</code></pre>
+<p>While these both have the same effect (i.e., both are rendered as a Level 1 Heading), setext headers are increasingly rare, are not as easy to automate, and are not as widely supported by other Markdown tools. Apart from this, the combination of setext and atx headers is inconsistent and nonstandard. This script fixes that by making all first level headings atx style by default.</p>
+<p>Notably, this affects the default heading when a note is created uses the &quot;New note&quot; button/menu item.</p>
+
+<h2>Backlinks</h2>
+
+<ul>
+    <li><a href="../scripts/scripts.html">Scripts</a></li>
+</ul>
+
+</body></html>

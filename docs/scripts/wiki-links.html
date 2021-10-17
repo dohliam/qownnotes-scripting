@@ -1,0 +1,45 @@
+<html><head><title>Wiki links</title><meta charset="utf-8"/><style>h1 { margin: 5px 0 20px 0; }h2, h3 { margin: 10px 0 15px 0; }img { max-width: 100%; }pre { background-color: #f1f1f1; border-radius: 5px; padding: 10px; }pre > code { padding: 0; }table {border-spacing: 0; border-style: solid; border-width: 1px; border-collapse: collapse; margin-top: 0.5em;}th, td {padding: 2px 5px;}a { color: #FF9137; text-decoration: none; } pre, code { font-family: Monospace; font-weight: normal;  }pre { display: block; background-color: #f1f1f1; white-space: pre-wrap } code { padding: 3px; overflow: auto; line-height: 1.45em; background-color: #f1f1f1; border-radius: 5px; color: #000000; } .code-comment { color: #75715E; font-style: italic;} .code-string { color: #E6DB74;} .code-literal { color: #AE81FF;} .code-type { color: #66D9EF;} .code-builtin { color: #A6E22E;} .code-keyword { color: #F92672;} .code-other { color: #F92672;} body { font-family: "Sans Serif"; font-weight: normal; font-size: 12pt; } span.critic.comment, span.critic.metadata {background-color:#FFFF00; padding-left: 4px; border-left: 4px solid #ff832b; } del {color: #FF0000 ; text-decoration: line-through;} ins {color: #008000 ; text-decoration: underline;} ins.break {background-color: #008000} mark {background-color:#ff832b;}</style></head><body class="export"><h1>Wiki links</h1>
+<p>Provides support for wiki-style internal links (e.g., <code>[[link]]</code>).</p>
+<p>This script can be used together with the <a href="../scripts/backlinks.html">backlinks</a> and <a href="../scripts/export-notes-as-website.html">export notes as website</a> scripts to create complex, deeply interlinked notes.</p>
+<p>Wiki links are different from standard Markdown-style links in that they do not require using full paths, specifying file extensions, or using the full link syntax, for example:</p>
+<pre><code class="language-markdown">[link text]&#47;path&#47;to&#47;link.md&#41;</code></pre>
+<h2>Syntax</h2>
+<p>Links are surrounded by double square brackets, and can contain either an optional &quot;group name&quot; (i.e., subfolder name), or optional link text after a single bar character, or any combination of these. For example:</p>
+<ul>
+<li><code>[[link]]</code>: A plain link to a note in the current folder with the filename <code>link.md</code></li>
+<li><code>[[groupname/link]]</code>: A link to a note in a different folder (called <code>groupname</code>, one level up in the file system hierarchy), with the filename <code>link.md</code></li>
+<li><code>[[groupname/link|link text]]</code>:  Any of the above two link styles, plus optional link text following the <code>|</code> character</li>
+</ul>
+<h2>Known issues</h2>
+<ul>
+<li>Wiki links display correctly and are clickable in the preview panel, however they appear as plain text in the editor window for now<ul>
+<li>It appears that styling elements in the editor window is not as easy as in the preview panel</li>
+<li>Eventually, it would be nice to have the ability to have wiki links display as links in the editor panel as well, and to be able to specify a custom link colour to (optionally) distinguish them from normal/external links</li>
+</ul>
+</li>
+<li>This script assumes that the note collection folder structure has <em>all notes</em> in subfolders (or &quot;groups&quot;), in other words that there are no top-level notes<ul>
+<li>If you do have top-level notes that are not in a subfolder, it does not appear to be possible to link to them using wiki-style links<ul>
+<li>However, links from top-level notes to other notes in subfolders seem to work fine</li>
+</ul>
+</li>
+<li>Top level notes may work unpredictably with the <a href="../scripts/backlinks.html">backlinks</a> script</li>
+</ul>
+</li>
+</ul>
+<h2>To do</h2>
+<ul>
+<li>[x] basic working prototype</li>
+<li>[ ] ability to adjust css colours in preferences</li>
+<li>[ ] ability to choose default file suffix (currently supports <code>.md</code>)</li>
+</ul>
+
+<h2>Backlinks</h2>
+
+<ul>
+    <li><a href="../issues/feature-requests.html">Feature requests</a></li>
+    <li><a href="../scripts/scripts.html">Scripts</a></li>
+    <li><a href="../utilities/note_stats.html">note_stats</a></li>
+    <li><a href="../utilities/titles_in_folder.html">titles_in_folder</a></li>
+</ul>
+
+</body></html>

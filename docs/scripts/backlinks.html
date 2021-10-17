@@ -1,0 +1,44 @@
+<html><head><title>Backlinks Script</title><meta charset="utf-8"/><style>h1 { margin: 5px 0 20px 0; }h2, h3 { margin: 10px 0 15px 0; }img { max-width: 100%; }pre { background-color: #f1f1f1; border-radius: 5px; padding: 10px; }pre > code { padding: 0; }table {border-spacing: 0; border-style: solid; border-width: 1px; border-collapse: collapse; margin-top: 0.5em;}th, td {padding: 2px 5px;}a { color: #FF9137; text-decoration: none; } pre, code { font-family: Monospace; font-weight: normal;  }pre { display: block; background-color: #f1f1f1; white-space: pre-wrap } code { padding: 3px; overflow: auto; line-height: 1.45em; background-color: #f1f1f1; border-radius: 5px; color: #000000; } .code-comment { color: #75715E; font-style: italic;} .code-string { color: #E6DB74;} .code-literal { color: #AE81FF;} .code-type { color: #66D9EF;} .code-builtin { color: #A6E22E;} .code-keyword { color: #F92672;} .code-other { color: #F92672;} body { font-family: "Sans Serif"; font-weight: normal; font-size: 12pt; } span.critic.comment, span.critic.metadata {background-color:#FFFF00; padding-left: 4px; border-left: 4px solid #ff832b; } del {color: #FF0000 ; text-decoration: line-through;} ins {color: #008000 ; text-decoration: underline;} ins.break {background-color: #008000} mark {background-color:#ff832b;}</style></head><body class="export"><h1>Backlinks Script</h1>
+<p>This script enables bidirectional linking by generating a list of backlinks to the current note from all other notes in the collection.</p>
+<p>By default, this list is generated only on first opening a given note, rather than every time the preview is rendered, since incoming links (i.e., in other notes) are not likely to change while the note is open. This improves efficiency considerably.</p>
+<p>However, this default behaviour can be switched off in the script options, which will generate (or regenerate) the backlinks list on every preview render. This is less efficient, but can be helpful in certain circumstances. For example, it is necessary to turn this on when using the <a href="../scripts/export-notes-as-website.html">Export notes as website</a> script to generate HTML if you want the rendered HTML to include Backlinks as well.</p>
+<h2>Limitations</h2>
+<p>This script is definitely a work-in-progress, and has already been rewritten in QML after an initial proof-of-concept version using Ruby, and probably still contains quite a few Rubyisms among other things. Help and suggestions to improve it are appreciated!</p>
+<p>The following are some known limitations with using backlinks in QOwnNotes:</p>
+<ul>
+<li>The backlinks script currently only looks for internal links in &quot;wiki link&quot; format, for example:<ul>
+<li><code>[[link]]</code>: a plain link to a note in the current folder with the filename <code>link.md</code></li>
+<li><code>[[groupname/link]]</code>: a link to a note in a different folder (called <code>groupname</code>, one level up in the file system hierarchy), with the filename <code>link.md</code></li>
+<li><code>[[groupname/link|link text]]</code>:  any of the above two link styles, plus optional link text following the <code>|</code> character</li>
+</ul>
+</li>
+<li>There is currently no support for &quot;regular&quot; markdown-style links (e.g.:<pre><code class="language-markdown">[My Link]&#40;&#47;some&#47;path&#47;link.md&#41;</code></pre>
+<ul>
+<li>Note: add to <a href="../issues/feature-requests.html">feature requests</a> that it would be nice to have an API to access an array of parsed links for a given note (which would make implementing this easier)</li>
+</ul>
+</li>
+<li>This script has not been tested on Windows and may not work there until support has been added for Windows-style directory separators<ul>
+<li>On a positive note, if you test this out and it doesn't work, it should be fairly easy to implement</li>
+</ul>
+</li>
+<li>The script can definitely be refactored to be much more efficient than it currently is<ul>
+<li>However, it currently works quite well for certain purposes (medium-sized note collections with ~2000 notes, and generating wiki-style websites)</li>
+</ul>
+</li>
+</ul>
+<h2>CLI utility</h2>
+<p>There is also a CLI version of the backlinks script, which can be found in the <code>utilities</code> section of this repo. This is based on the original Ruby program that was called externally by early versions of the QOwnNotes script, and allows you to print all backlinks for a given page to standard output in a variety of styles (e.g., HTML, wiki-style, plain TSV). It does not rely on QOwnNotes and can be used independently with any collection of linked notes in Markdown format.</p>
+
+<h2>Backlinks</h2>
+
+<ul>
+    <li><a href="../index.html">QOwnNotes Scripting Wiki</a></li>
+    <li><a href="../scripts/export-notes-as-website.html">Export notes as website</a></li>
+    <li><a href="../scripts/scripts.html">Scripts</a></li>
+    <li><a href="../scripts/wiki-links.html">Wiki links</a></li>
+    <li><a href="../utilities/backlinks_cli.html">backlinks_cli</a></li>
+    <li><a href="../utilities/note_stats.html">note_stats</a></li>
+    <li><a href="../utilities/utilities.html">Utilities</a></li>
+</ul>
+
+</body></html>

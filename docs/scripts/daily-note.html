@@ -1,0 +1,36 @@
+<html><head><title>Daily note</title><meta charset="utf-8"/><style>h1 { margin: 5px 0 20px 0; }h2, h3 { margin: 10px 0 15px 0; }img { max-width: 100%; }pre { background-color: #f1f1f1; border-radius: 5px; padding: 10px; }pre > code { padding: 0; }table {border-spacing: 0; border-style: solid; border-width: 1px; border-collapse: collapse; margin-top: 0.5em;}th, td {padding: 2px 5px;}a { color: #FF9137; text-decoration: none; } pre, code { font-family: Monospace; font-weight: normal;  }pre { display: block; background-color: #f1f1f1; white-space: pre-wrap } code { padding: 3px; overflow: auto; line-height: 1.45em; background-color: #f1f1f1; border-radius: 5px; color: #000000; } .code-comment { color: #75715E; font-style: italic;} .code-string { color: #E6DB74;} .code-literal { color: #AE81FF;} .code-type { color: #66D9EF;} .code-builtin { color: #A6E22E;} .code-keyword { color: #F92672;} .code-other { color: #F92672;} body { font-family: "Sans Serif"; font-weight: normal; font-size: 12pt; } span.critic.comment, span.critic.metadata {background-color:#FFFF00; padding-left: 4px; border-left: 4px solid #ff832b; } del {color: #FF0000 ; text-decoration: line-through;} ins {color: #008000 ; text-decoration: underline;} ins.break {background-color: #008000} mark {background-color:#ff832b;}</style></head><body class="export"><h1>Daily note</h1>
+<p>This script creates a menu item and a button to create or jump to a note for the current day. It is a slightly modified version of the <a href="https://github.com/qownnotes/scripts/blob/master/journal-entry/journal-entry.qml">journal-entry</a> script by @pbek, @sanderboom, and @kantrol.</p>
+<p>Features:</p>
+<ul>
+<li>atx headings (instead of setext headings)</li>
+<li>plain ISO dates (without timestamps) -- hence the idea of a &quot;daily note&quot; written once per day, rather than several notes throughout the day with different timestamps</li>
+</ul>
+<p>Otherwise, options and usage are very similar to the original script.</p>
+<h2>Options</h2>
+<ul>
+<li><strong>Headline prefix</strong>: Prefix to use for the note headline</li>
+<li><strong>Default folder</strong>: The default folder where the newly created daily note should be placed<ul>
+<li>The path to the folder should be specified relative to the note folder</li>
+<li>Make sure that the full path exists</li>
+<li>Example: to place new daily notes in the subfolder <code>Journal</code> enter: <code>&quot;Journal&quot;</code></li>
+<li>Leave this blank to disable (notes will then be created in the currently active folder)</li>
+</ul>
+</li>
+<li><strong>Create new folder</strong>: Whetherto create a new folder with the date string in the default folder</li>
+<li><strong>Default tags</strong>: One or more default tags (separated by commas) to assign to a newly created daily note. Leave blank to disable auto-tagging.</li>
+<li><strong>Ask for the date string</strong>: Ask for the date string instead of using the current date (for example, to use a past or future date)</li>
+<li><strong>Template</strong>: Template for a new daily entry.</li>
+</ul>
+<h2>Example</h2>
+<p>If you click on the &quot;Create daily note&quot; button, a note will be created in the <code>journal</code> subfolder with the title being today's date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format. (Both the default title and subfolder name can be adjusted -- see Options section above.)</p>
+<h2>Bugs</h2>
+<p><em>Caution:</em> Users of this script should be aware that text typed into a newly-created note may sometimes <strong>not be stored</strong> until clicking away from and back to the note. This appears related to a bug where newly-created notes are given a temporary &quot;hash&quot;-style filename before finally settling on the actual note name.</p>
+<p>Update: it appears that this is a <a href="https://github.com/qownnotes/scripts/issues/132">known issue</a>. However, the suggested fix does not seem to correct the problem (at least in this script).</p>
+
+<h2>Backlinks</h2>
+
+<ul>
+    <li><a href="../scripts/scripts.html">Scripts</a></li>
+</ul>
+
+</body></html>
