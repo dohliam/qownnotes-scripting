@@ -1,6 +1,6 @@
-# Qownnotes scripting (developtment)
+# QOwnNotes scripting (developtment)
 
-This repo contains Qownnotes scripts under development for eventual submission to the [official scripting repository](@). The scripts themselves are in the `scripts` folder.
+This repo contains QOwnNotes scripts under development for eventual submission to the [official scripting repository](@). The scripts themselves are in the `scripts` folder.
 
 They can be installed directly in QOwnNotes as is, but it is probably easier to use the versions submitted to the official repository which can be retrieved and updated automatically.
 
