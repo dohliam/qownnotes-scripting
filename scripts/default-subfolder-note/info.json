@@ -1,0 +1,9 @@
+{
+  "name": "Default subfolder note",
+  "identifier": "default-subfolder-note",
+  "script": "default-subfolder-note.qml",
+  "authors": ["@dohliam"],
+  "version": "1.0",
+  "minAppVersion": "20.4.16",
+  "description" : "This script creates a menu item and a button to jump to the default or main note for the current subfolder."
+}
