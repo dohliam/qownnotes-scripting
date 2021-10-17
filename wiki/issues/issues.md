@@ -1,4 +1,4 @@
-## Issues
+# Issues
 
 * [[Bugs]]
 * [[Feature requests]]
