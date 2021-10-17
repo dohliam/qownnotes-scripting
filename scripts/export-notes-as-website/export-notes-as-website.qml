@@ -55,6 +55,12 @@ Script {
             script.startSynchronousProcess("mkdir", ["-p", exportFolder]);
             var exportPath = exportFolder + "/" + noteName + ".html";
             var noteHtml = note.toMarkdownHtml();
+            var titleMatch = noteHtml.match(/<h1>(.*)<\/h1>/);
+            var noteTitle = noteName;
+            if (titleMatch) {
+              noteTitle = titleMatch[1];
+            }
+            noteHtml = noteHtml.replace(/<head>/, "<head><title>" + noteTitle + "</title>");
             var linkRe = new RegExp("file://" + path + "/([^\"]+?)\.md", "g");
             if (useAbsolutePaths) {
                 noteHtml = noteHtml.replace(linkRe, "file://" + path + "/export/$1.html");
