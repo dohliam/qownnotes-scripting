@@ -66,10 +66,15 @@ Script {
                 noteHtml = noteHtml.replace(linkRe, "file://" + path + "/export/$1.html");
             } else {
                 noteHtml = noteHtml.replace(linkRe, function(_, linkPath) {
-                    var depth = linkPath.split("/").length - 1;
                     var parentDir = "";
-                    for (var i = 0; i < depth; i++) {
-                        parentDir += "../";
+                    if (subFolder != "") {
+                        var depth = linkPath.split("/").length - 1;
+                        if (depth == 0) {
+                            depth ++;
+                        }
+                        for (var i = 0; i < depth; i++) {
+                            parentDir += "../";
+                        }
                     }
                     return parentDir + linkPath + ".html";
                 });
@@ -78,6 +83,6 @@ Script {
             script.log("Successfully exported note: " + subFolder + "/" + note.name);
         });
 
-	script.log("All notes succssfully exported!");
+        script.log("All notes succssfully exported!");
     }
 }
