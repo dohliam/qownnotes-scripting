@@ -7,7 +7,7 @@ This script can be used together with the [[backlinks]] and [[export notes as we
 Wiki links are different from standard Markdown-style links in that they do not require using full paths, specifying file extensions, or using the full link syntax, for example:
 
 ```markdown
-[link text]/path/to/link.md)
+[link text](/path/to/link.md)
 ```
 
 ## Syntax
