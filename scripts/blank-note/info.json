@@ -1,0 +1,10 @@
+{
+  "name": "Blank New Note",
+  "identifier": "blank-note",
+  "script": "blank-note.qml",
+  "authors": ["@dohliam"],
+  "platforms": ["linux", "macos", "windows"],
+  "version": "0.0.1",
+  "minAppVersion": "20.6.0",
+  "description" : "Change default New Note action to create a blank note with no headline or other text."
+}
