@@ -6,20 +6,32 @@ import QOwnNotesTypes 1.0
  */
 QtObject {
     /**
-     * This function is called before a note note is created
-     * 
-     * It allows you to modify the headline of the note before it is created
-     * Note that you have to take care about a unique note name, otherwise
-     * the new note will not be created, it will just be found in the note list
-     *
-     * You can use this method for creating note templates
-     * 
-     * @param headline text that would be used to create the headline
-     * @return {string} the headline of the note
+     * Initializes the custom action
      */
-    function handleNewNoteHeadlineHook(headline) {
-        var text = "";
-
-        return text;
+    function init() {
+        script.registerCustomAction("blankNote", "Create a new blank note", "Blank note", "document-new");
     }
+
+    /**
+     * This function is invoked when a custom action is triggered
+     * in the menu or via button
+     *
+     * @param identifier string the identifier defined in registerCustomAction
+     */
+    function customActionInvoked(identifier) {
+        if (identifier != "blankNote") {
+            return;
+        }
+
+        var headline = script.inputDialogGetText(
+            "line edit", "Note headline", "");
+
+        var text = "";
+        var filePath = script.currentNoteFolderPath() + script.dirSeparator();
+        var fileName = headline + ".md";
+        script.writeToFile(filePath + fileName, text);
+        var note = script.fetchNoteByFileName(fileName);
+        script.setCurrentNote(note);
+    }
+
 }
