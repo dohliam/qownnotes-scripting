@@ -30,6 +30,11 @@ QtObject {
         var filePath = script.currentNoteFolderPath() + script.dirSeparator();
         var fileName = headline + ".md";
         script.writeToFile(filePath + fileName, text);
+
+        // Force a reload of the note list
+        mainWindow.buildNotesIndexAndLoadNoteDirectoryList(true, true);
+
+        // var note = script.fetchNoteByFileName(filePath + fileName);
         var note = script.fetchNoteByFileName(fileName);
         script.setCurrentNote(note);
     }
