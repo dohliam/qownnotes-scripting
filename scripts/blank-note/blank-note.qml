@@ -22,9 +22,7 @@ QtObject {
     function getSubfolder() {
         var noteSubFolderQmlObj = Qt.createQmlObject("import QOwnNotesTypes 1.0; NoteSubFolder{}", mainWindow, "noteSubFolder");
         var subFolder = noteSubFolderQmlObj.activeNoteSubFolder();
-        script.log(subFolder.fullPath());
-        script.log(subFolder.relativePath());
-        return subFolder;
+        return subFolder.fullPath();
     }
 
     function customActionInvoked(identifier) {
@@ -38,16 +36,15 @@ QtObject {
         var text = "";
         var subFolder = getSubfolder();
         var filePath = subFolder + script.dirSeparator();
-        //var filePath = script.currentNoteFolderPath() + script.dirSeparator();
         var fileName = headline + ".md";
         script.writeToFile(filePath + fileName, text);
 
         // Force a reload of the note list
         mainWindow.buildNotesIndexAndLoadNoteDirectoryList(true, true);
 
-        var note = script.fetchNoteByFileName(filePath + fileName);
-        //var note = script.fetchNoteByFileName(fileName);
+        var note = script.fetchNoteByFileName(fileName);
         script.setCurrentNote(note);
+        script.log("New blank note created: " + filePath + fileName);
     }
 
 }
