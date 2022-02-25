@@ -2,7 +2,7 @@ import QtQml 2.0
 import QOwnNotesTypes 1.0
 
 /**
- * This script changes the default New Note action to create a blank note instead of a note with a headline.
+ * This script creates a custom action to create a new blank note with no headline or other text.
  */
 QtObject {
     /**
@@ -31,7 +31,7 @@ QtObject {
         }
 
         var headline = script.inputDialogGetText(
-            "line edit", "Note headline", "");
+            "line edit", "Note title", "");
 
         var text = "";
         var subFolder = getSubfolder();
