@@ -5,7 +5,7 @@
 # (call from within target directory
 # or specify directory path)
 
-require_relative 'backlinks-cli.rb'
+require_relative 'backlinks_cli.rb'
 
 pwd = Dir.pwd
 if ARGV[0]
