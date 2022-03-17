@@ -24,5 +24,9 @@ notes.sort.each do |n|
   if !first_line.match(/^# /)
     title = basename_to_title(basename)
   end
-  puts "* [[#{basename}|#{title}]]"
+  if basename == title
+    puts "* [[#{basename}]]"
+  else
+    puts "* [[#{basename}|#{title}]]"
+  end
 end
