@@ -1,0 +1,9 @@
+{
+  "name": "Log note",
+  "identifier": "log-note",
+  "script": "log-note.qml",
+  "authors": ["@dohliam", "@pbek", "@sanderboom", "@kantrol"],
+  "version": "1.0",
+  "minAppVersion": "22.3.3",
+  "description" : "This script creates a menu item and a button to create or jump to a regular (daily or monthly) log or journal note."
+}
