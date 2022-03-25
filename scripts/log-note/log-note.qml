@@ -9,9 +9,11 @@ QtObject {
     property string defaultFolder;
     property string defaultTags;
     property string noteBodyTemplate;
+    property string dateSeparator;
     property bool isCreateFolderWithDateString;
     property bool isAskForDateString;
     property bool isShowDay;
+    property bool removeSeparators;
 
     // register your settings variables so the user can set them in the script settings
     property variant settingsVariables: [
@@ -37,6 +39,13 @@ QtObject {
             "default": false,
         },
         {
+            "identifier": "dateSeparator",
+            "name": "Date separator",
+            "description": "Character to use as a separator between the year, month, and day in date strings (e.g., use '-' for dates in the form '2010-01-01'). Leave blank to not use a separator (e.g., '20100101').",
+            "type": "string",
+            "default": "-",
+        },
+        {
             "identifier": "defaultTags",
             "name": "Default tags",
             "description": "One or more default tags (separated by commas) to assign to a newly created log note. Leave blank to disable auto-tagging.",
@@ -54,6 +63,13 @@ QtObject {
             "identifier": "isShowDay",
             "name": "Show day in date",
             "description": "Show full date including day (default: show year and month only)",
+            "type": "boolean",
+            "default": false,
+        },
+        {
+            "identifier": "removeSeparators",
+            "name": "Remove separators",
+            "description": "Remove separators (e.g., '-') from filenames. Check this if you want to use a date like '2010-01-01 for your headline, but save the file as '20100101.md'. Default is to include the separators in the filename.",
             "type": "boolean",
             "default": false,
         },
@@ -86,9 +102,9 @@ QtObject {
 
         // get the date headline
         var m = new Date();
-        var dateString = m.getFullYear() + "-" + ("0" + (m.getMonth()+1)).slice(-2);
+        var dateString = m.getFullYear() + dateSeparator + ("0" + (m.getMonth()+1)).slice(-2);
         if (isShowDay) {
-            dateString = m.getFullYear() + "-" + ("0" + (m.getMonth()+1)).slice(-2) + "-" + ("0" + m.getDate()).slice(-2);
+            dateString = m.getFullYear() + dateSeparator + ("0" + (m.getMonth()+1)).slice(-2) + dateSeparator + ("0" + m.getDate()).slice(-2);
         }
 
         if (isAskForDateString) {
@@ -97,7 +113,11 @@ QtObject {
         }
 
         var headline = headlinePrefix + dateString;
-        var noteName = headline.replace(/\-/g, "")
+        var noteName = dateString;
+        if (removeSeparators) {
+            var seperatorRegex = new RegExp(dateSeparator, "g");
+            noteName = dateString.replace(seperatorRegex, "");
+        }
 
         var fileName = noteName + ".md";
 
@@ -124,7 +144,7 @@ QtObject {
         if (isCreateFolderWithDateString) {
             subFolder += (subFolder !== '') ? '/' : '';
             subFolder += dateString;
-            mainWindow.createNewNoteSubFolder(dateString)
+            mainWindow.createNewNoteSubFolder(dateString);
         }
 
         var note = script.fetchNoteByFileName(fileName);
