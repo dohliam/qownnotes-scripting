@@ -33,9 +33,11 @@ def print_backlinks(options)
       if options[:html]
         puts "  <li><a href=\"file://#{backlink_path}\">#{backlink_title}</a></li>"
       elsif options[:markdown]
-        puts "* [[#{backlink_group}/#{backlink_link}|#{backlink_title}]]"
+        puts "* [#{backlink_title}](#{backlink_path})"
       elsif options[:plain]
         puts "#{backlink_path}\t#{backlink_title}"
+      elsif options[:wikilinks]
+        puts "* [[#{backlink_group}/#{backlink_link}|#{backlink_title}]]"
       else
         puts "#{backlink_path}\t#{backlink_title}"
       end
@@ -97,14 +99,39 @@ def get_link(backlink_path)
   backlink_link = File.basename(backlink_path, backlink_ext)
 end
 
+def links2array(options)
+  if @backlinks.length != 0
+    backlink_array = []
+    @backlinks.each do |backlink_path, backlink_title|
+      backlink_group = get_group(backlink_path)
+      backlink_link = get_link(backlink_path)
+
+      if options[:html]
+        backlink_array << "  <li><a href=\"file://#{backlink_path}\">#{backlink_title}</a></li>"
+      elsif options[:markdown]
+        backlink_array << "* [#{backlink_title}](#{backlink_path})"
+      elsif options[:plain]
+        backlink_array << "#{backlink_path}\t#{backlink_title}"
+      elsif options[:wikilinks]
+        backlink_array << "* [[#{backlink_group}/#{backlink_link}|#{backlink_title}]]"
+      else
+        backlink_array << "#{backlink_path}\t#{backlink_title}"
+      end
+    end
+    backlink_array
+  end
+end
+
 if __FILE__==$0
   options = {}
   OptionParser.new do |opts|
     opts.banner = "Usage: ./backlinks_cli [options] [filename]"
 
+    opts.on("-a", "--absolute", "Print absolute rather than relative links") { options[:absolute] = true }
     opts.on("-l", "--use-html", "Output results in HTML format") { options[:html] = true }
-    opts.on("-m", "--markdown", "Output results in markdown format with wikilinks") { options[:markdown] = true }
+    opts.on("-m", "--markdown", "Output results in standard markdown format") { options[:markdown] = true }
     opts.on("-p", "--plain-text", "Output results in plain text") { options[:plain] = true }
+    opts.on("-w", "--wikilinks", "Output results in markdown format with wikilinks") { options[:wikilinks] = true }
 
   end.parse!
 
